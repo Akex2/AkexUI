@@ -11,3 +11,4 @@ asyd-timer.py le lanceur en python2
 
 TODO clavier a intégrer
      et retour des commande dans le terminal trouver la requete pycurl ou urllib
+     url du clavier http://code.activestate.com/recipes/579118-pyqt-touch-input/
