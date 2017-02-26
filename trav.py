@@ -13,7 +13,8 @@ class travel():
 		self.listtemps=[0]
 		self.listtemperatureE=[0]
 		self.listtemperatureB=[0]
-		#print self.distance
+		self.cible = ""
+		self.X = 0
 
 	def get_distance(self):
 		#self.distance = distance
@@ -39,6 +40,12 @@ class travel():
 
 	def get_listtemps(self):
 		#self.distance = distance
+		temps = 0.00
+		self.X += 0.033
+		#print "%3.2f"%self.X
+		#temps = self.X / 60
+		#print "%3.2f"%temps
+		self.listtemps.append(self.X)
 		return self.listtemps[:150]
 
 
@@ -74,3 +81,12 @@ class travel():
 		self.listtemperatureB.append(nlisttemperatureB)
 		#print self.listtemperatureB[-150:]
 		##print ntempss
+
+	def get_cible(self):
+		#self.distance = distance
+		return self.cible
+
+	def set_cible(self,ncible):
+		self.cible = ncible
+		#print ndistance
+		#self.distance=ndistance

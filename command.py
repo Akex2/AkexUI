@@ -23,6 +23,14 @@ class Printer:
         data = json.dumps(dict({"command": cmd}))
         self._post_data('api/printer/command', data)
 
+    def cmd2(self, cmd):
+        data = json.dumps(dict({"command": cmd}))
+        self._post_data('api/job', data)
+
+    def cmd3(self, cmd):
+        data = json.dumps(dict({"command": "pause", "action": cmd}))
+        self._post_data('api/job', data)
+
     def selectP(self, gcodeselect):
         data = json.dumps(dict({"command": "select", "print": "true"}))
         self._post_data('api/files/local/%s' % (gcodeselect), data)
@@ -38,3 +46,13 @@ class Printer:
     def disconnect(self):
         data = json.dumps(dict({"command": "disconnect"}))
         self._post_data('/api/connection', data)
+
+    def timelaps(self, typeT, postRoll, fps, zhop):
+        if typeT == "zchange":  
+            data = json.dumps(dict({"type": "%s"%typeT, "postRoll": "%i"%postRoll, "fps": "%i"%fps,  "retractionZHop": "%i"%zhop}))
+        if typeT == "timed": 
+            data = json.dumps(dict({"type": "%s"%typeT, "postRoll": "%i"%postRoll, "fps": "%i"%fps,  "interval": "%i"%zhop}))
+        if typeT == "off": 
+            data = json.dumps(dict({"type": "%s"%typeT}))
+
+        self._post_data('/api/timelapse', data)
