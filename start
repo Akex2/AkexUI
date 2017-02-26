@@ -1,0 +1,8 @@
+#!/bin/bash
+sleep 15
+unclutter &
+python /root/Final/asyd-timer.py
+#sleep 2
+#service touch restart
+#python /root/asyd/asyd-timer.py
+exit 0
