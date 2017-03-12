@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo su
+#sudo su
 echo "update"
 apt-get update
 echo "git"
