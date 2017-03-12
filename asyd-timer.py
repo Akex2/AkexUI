@@ -276,21 +276,21 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
         self.clavier.hide()
 
         ###Instanciation de myprinter au module command et a la class Printer
-        self.myprinter = command.Printer("http://127.0.0.1:5000", "054E508852624649B8B250B341CFF639")
+#        self.myprinter = command.Printer("http://127.0.0.1:5000", "054E508852624649B8B250B341CFF639")
         ###Instanciation de travx au module trav et a la class travel
-        self.travx=trav.travel()
-        self.travx1=trav.travel()
+  #      self.travx=trav.travel()
+  #      self.travx1=trav.travel()
         ###Marque le depart pour le graph
-        fin = time.time()
-        self.travx.set_temps(fin)
+   #     fin = time.time()
+    #    self.travx.set_temps(fin)
         ###Remplissage de l onglet connexion etat/port list/et profile
-        content3 = alist.liste('http://127.0.0.1:5000/api/connection','054E508852624649B8B250B341CFF639')
-        self.update_temp3(content3)
-        self.RafrPorts(content3)
+    #    content3 = alist.liste('http://127.0.0.1:5000/api/connection','054E508852624649B8B250B341CFF639')
+     #   self.update_temp3(content3)
+     #   self.RafrPorts(content3)
         ###Remplissage de l onglet print fichier temps filament etc
-        data = alist.liste('http://127.0.0.1:5000/api/job','054E508852624649B8B250B341CFF639')
-        self.update_temp2(data)
-        self.RafrFile()
+     #   data = alist.liste('http://127.0.0.1:5000/api/job','054E508852624649B8B250B341CFF639')
+      #  self.update_temp2(data)
+      #  self.RafrFile()
         
     def InPrint(self):
         self.groupBox.setEnabled(0)
