@@ -19,51 +19,37 @@ import alist
 import numpy as np
 import pyqtgraph as pg
 import server2
-import testlib
 import socket
 import threading
 import websocket
+import yaml
 
-class lazyworker(QWidget):
-    message = pyqtSignal()
-    data = "akex on the best"
 
-    def __init__(self):
-        QWidget.__init__(self)
-
-    def doWork(self):
-        for self.i in range(0,100):
-            time.sleep(0.1)
-            data = 1
-            self.emit(SIGNAL("alex()"))
-            #self.message.emit()
-            #print data
-            
 
 class GetTemp(QObject):
-    message = pyqtSignal(dict)
+    message = pyqtSignal()
 
     def __init__(self):
         QObject.__init__(self)
         # self.message = pyqtSignal(str)
 
-    def get_values(self):
-        data = alist.liste('http://127.0.0.1:5000/api/printer','054E508852624649B8B250B341CFF639')
+    def get_value_printer(self):
+        #data = self.datalist.liste('api/printer')
         #data = {'bed': str(random.randint(50, 60)),
         #        'tool0': str(random.randint(180, 220))}
-        self.message.emit(data)
+        self.message.emit()
 
-    def get_values2(self):
-        data = alist.liste('http://127.0.0.1:5000/api/job','054E508852624649B8B250B341CFF639')
+    def get_value_job(self):
         #data = {'bed': str(random.randint(50, 60)),
         #        'tool0': str(random.randint(180, 220))}
-        self.message.emit(data)
+        self.message.emit()
 
-    def get_values3(self):
-        data = alist.liste('http://127.0.0.1:5000/api/connection','054E508852624649B8B250B341CFF639')
+    def get_value_connect(self):       
         #data = {'bed': str(random.randint(50, 60)),
         #        'tool0': str(random.randint(180, 220))}
-        self.message.emit(data)
+        self.message.emit()
+
+
 class Example(QtGui.QDialog):
     def __init__(self, parent=None):
         QtGui.QMessageBox.__init__(self)
@@ -80,116 +66,25 @@ class Example(QtGui.QDialog):
         return ret
 
 class myWorker(QtCore.QThread):
-    # Register the signal as a class variable first
     mySignal = QtCore.pyqtSignal(QtCore.QString)
+    #def __init__(self, parent=None):
+    #    alex = MainDialog()
+
+    # Register the signal as a class variable first
+    #alex = MainDialog()
     # init and other stuff...
     def someFunction(self, msg):
-        msg = "alex"
-        print "boucle somefuction"
+        #print type(msg)
+        #print msg
+        #print "boucle somefuction in asyd file"
+        #time.sleep(0.1)
+        #alex = MainDialog()
+        #self.alex.retourterminal(msg)
         #....
         # emit the signal with the parameter
         self.mySignal.emit(msg)
-class wsc():
-    """
-    A single connection (client) of the program
-    """
-    
-    def __init__(self):
-        #threading.Thread.__init__(self)
-        self.akex = myWorker()
-        url = "ws://127.0.0.1:5000/sockjs/{:0>3d}/{}/websocket".format(random.randrange(0, stop=999), uuid.uuid4() )
-        websocket.enableTrace(True)
-        #self.ws = create_connection(url)
-        ws = websocket.WebSocketApp(url,on_message = self.on_message)
-        self.inc=0
-        self.cmd ="M119"
-        #ws = websocket.WebSocketApp("ws://echo.websocket.org/", on_message = on_message, on_close = on_close)
-        wst = threading.Thread(target=ws.run_forever)
-        wst.daemon = True
-        wst.start()
-        
 
-    def on_message(self,ws, message):
-        message_body = message[1:]
-    #print message_body
-    #nmessage = message_body["current"]
-        #time.sleep(0.1)
-        self.retour(message)
-    #print nmessage
 
-    def setcmd(self, ncmd): 
-        print ncmd
-        #thread.start_new_thread(run, ())
-        self.cmd = ncmd
-
-    
-    #print message_body
-    def retour(self, retour):
-        a = retour[1:]
-        cmd = self.cmd
-        #data = json.loads(retour)
-        #time.sleep(0.1)
-
-        try:
-            data = json.loads(a)
-            b = data[0]['current']['logs'][0]
-            #c = data[0]['current']
-        #print c
-        #c = b[0:10]
-        #c = data[0]['current']['logs']['Recv']
-        #if not b == "M105":
-            #print c
-    #nmessage = demjson.decode(a, strict=False)
-        #nmessage = message[2]
-    #print data
-        #print c
-
-            re1='(Send)'    # Word 1
-            re2='(:)'   # Any Single Character 1
-            re3='( )'   # Any Single Character 2
-            re4='(M)'   # Any Single Character 3
-            re5='(1)'   # Any Single Character 4
-            re6='(0)'   # Any Single Character 5
-            re7='(5)'   # Any Single Character 6
-            re17='(%s)'%cmd
-            re8='(Recv)'    # Word 1
-            re9='(:)'   # Any Single Character 1
-            re10='( )'  # Any Single Character 2
-            re11='(o)'  # Any Single Character 3
-            re12='(k)'  # Any Single Character 4
-            re13='( )'  # Any Single Character 5
-            re14='(T)'  # Any Single Character 6
-            re15='$'
-            re16='(  )'
-            #rg = re.compile(re1+re2+re3+re4+re5+re6+re7,re.IGNORECASE|re.DOTALL)
-            rg = re.compile(re1+re2+re3+re17,re.IGNORECASE|re.DOTALL)#m = rg.search(b)
-            m = rg.match(b)
-            #rg2 = re.compile(re8+re9+re10+re11+re12+re13+re14,re.IGNORECASE|re.DOTALL)
-            #m2 = rg2.match(b)
-            #rg3 = re.compile(re8+re9+re16+re11+re12+re13+re14,re.IGNORECASE|re.DOTALL)
-           # m3 = rg3.match(b)
-            #print m2
-            #if (m3 is not None) or (m2 is not None) or (m is not None) :
-            #    pass
-            print b
-            if (m is not None) or (self.inc) == 1 :
-                if self.inc == 1 :
-                    #print b
-                    self.inc=0
-                    print "premiere boucle"
-                    myWorker.someFunction(b)
-                    
-                if (self.inc == 0) and (m is not None) :
-                    print b
-                    self.inc = 1
-                    print "deuxieme boucle"
-                else :
-                    pass
-
-            else :
-                pass
-        except:
-            pass
 #class App(QMainWindow): #(QtGui.QTabWidget, prototest.Ui_TabWidget):
 class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
     def __init__(self,parent=None):
@@ -203,42 +98,42 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
         #self.lazy.message.connect(self.updateUI)
 
         # Création d'une instance de GetTemp
-        self.get_status = GetTemp()
+        self.get_printer = GetTemp()
         # On connecte le message émis par GetTemp à la méthode update_temp
-        self.get_status.message.connect(self.update_temp)
+        self.get_printer.message.connect(self.update_temp)
 
         # Créatiion d'un QTimer
         self.timer = QTimer()
         # Choix de l'intervalle
         self.timer.setInterval(2000)
-        # On appelle la méthode get_values de l'instance de GetStatus quand le timer arrive à expiration
-        self.timer.timeout.connect(self.get_status.get_values)
+        # On appelle la méthode get_value_printer de l'instance de GetStatus quand le timer arrive à expiration
+        self.timer.timeout.connect(self.get_printer.get_value_printer)
         # Démarrage du timer
         self.timer.start()
 
 
-        self.get_status2 = GetTemp()
+        self.get_job = GetTemp()
         # On connecte le message émis par GetTemp à la méthode update_temp
-        self.get_status2.message.connect(self.update_temp2)
+        self.get_job.message.connect(self.update_job)
 
         # Créatiion d'un QTimer
         self.timer2 = QTimer()
         # Choix de l'intervalle
         self.timer2.setInterval(5000)
-        # On appelle la méthode get_values de l'instance de GetStatus quand le timer arrive à expiration
-        self.timer2.timeout.connect(self.get_status2.get_values2)
+        # On appelle la méthode get_value_printer de l'instance de GetStatus quand le timer arrive à expiration
+        self.timer2.timeout.connect(self.get_job.get_value_job)
         # Démarrage du timer
         self.timer2.start()
 
-        self.get_status3 = GetTemp()
+        self.get_etat = GetTemp()
         # On connecte le message émis par GetTemp à la méthode update_temp
-        self.get_status3.message.connect(self.update_temp3)
+        self.get_etat.message.connect(self.update_etat)
 
         self.timer3 = QTimer()
         # Choix de l'intervalle
         self.timer3.setInterval(5000)
-        # On appelle la méthode get_values de l'instance de GetStatus quand le timer arrive à expiration
-        self.timer3.timeout.connect(self.get_status3.get_values3)
+        # On appelle la méthode get_value_printer de l'instance de GetStatus quand le timer arrive à expiration
+        self.timer3.timeout.connect(self.get_etat.get_value_connect)
         # Démarrage du timer
         self.timer3.start()
 
@@ -255,10 +150,14 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
         #self.connect(tl, SIGNAL("update(int)"), self.updateUI)
         #tl.doWork()
 
+        with open('/root/Final/akex.yaml', 'r') as f:
+            doc = yaml.load(f)
+        url = doc["Octoprint"]["url"]
+        apikey = doc["Octoprint"]["apikey"]
+        self.speed = doc ["Printer"]["speed"]
 
-
-        import command
-        import trav
+        #import command
+        #import trav
         #pg.setConfigOption('background', 'w') #before loading widget
         #plt=self.plot
         #curve = plt.plot()
@@ -424,7 +323,10 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
         self.clavier.hide()
 
         ###Instanciation de myprinter au module command et a la class Printer
-        self.myprinter = command.Printer("http://127.0.0.1:5000", "054E508852624649B8B250B341CFF639")
+        self.myprinter = command.Printer(url,apikey)
+
+        self.datalist = alist.lista(url,apikey)
+
         ###Instanciation de travx au module trav et a la class travel
         self.travx=trav.travel()
         self.travx1=trav.travel()
@@ -432,12 +334,12 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
         fin = time.time()
         self.travx.set_temps(fin)
         ###Remplissage de l onglet connexion etat/port list/et profile
-        content3 = alist.liste('http://127.0.0.1:5000/api/connection','054E508852624649B8B250B341CFF639')
-        self.update_temp3(content3)
-        self.RafrPorts(content3)
+        
+        self.update_etat()
+        self.RafrPorts()
         ###Remplissage de l onglet print fichier temps filament etc
-        data = alist.liste('http://127.0.0.1:5000/api/job','054E508852624649B8B250B341CFF639')
-        self.update_temp2(data)
+        
+        self.update_job()
         self.RafrFile()
         #import testlib
         #tl = lazyworker()
@@ -446,10 +348,12 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
         #tl.RegisterSignal(self.updateUI)
         #self.test = tl.doWork()
 
-        self.worker = testlib.myWorker()
+        self.worker = myWorker()
         # register signal to a slot
         self.worker.mySignal.connect(self.updateUI)
-        self.wsc= server2.wsc()
+        #self.wsc= server2.wsc()
+        self.wsc = server2.wsc(self.worker)
+        #self.wsc= wsc()
 
     
         
@@ -484,8 +388,7 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
         self.myprinter.disconnect()
 
     def BConectRafrClicked(self):
-        content3 = alist.liste('http://127.0.0.1:5000/api/connection','054E508852624649B8B250B341CFF639')
-        self.RafrPorts(content3)
+        self.RafrPorts()
         
     def PBRebootClicked(self):
         if self.RBOcto.isChecked() == 1: 
@@ -507,7 +410,9 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
         else : 
             pass
 
-    def RafrPorts(self, data):
+    def RafrPorts(self):
+        self.update_job()
+        data = self.datalist.liste('api/connection')
         j = 0
         self.CBport.clear()
         while j < len(data['options']["ports"]):
@@ -528,8 +433,8 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
         #print gcodeselect
         self.myprinter.select(gcodeselect)
         time.sleep(0.5)
-        data = alist.liste('http://127.0.0.1:5000/api/job','054E508852624649B8B250B341CFF639')
-        self.update_temp2(data)
+        data = self.datalist.liste('api/job')
+        self.update_job(data)
         #data = json.dumps(dict({"select", "print"":" false}))    
 
     def BPrintClicked(self):
@@ -561,15 +466,34 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
         self.myprinter.cmd2("cancel")
 
     def RafrFile(self):
-        content2 = alist.liste('http://127.0.0.1:5000/api/files','054E508852624649B8B250B341CFF639')
+        content2 = self.datalist.liste('api/files')
         self.LWGcode.clear()
         i = 0
+        j = 0
+        liste_fichiers = []
         while i < len(content2['files']):
             fichier = content2['files'][i]['name']
-            #print fichier
-            self.LWGcode.addItem(fichier)
+            
+            #print a
+            #liste_fichiers = [ {'filename': 'toto', 'ctime': '42'}, {'filename': 'tutu', 'ctime': '43'}] par exemple
+            date = content2['files'][i]['date']
+            #liste_fichiers = []
+            liste_fichiers.append({'filename': fichier, 'ctime': date})
+            
+            
             #self.oports.addItem(fichier)
             i = i + 1
+            a = sorted(liste_fichiers, key=lambda x: x['ctime'],reverse=True)
+            #print a
+        #a = sorted(liste_fichiers, key=lambda x: 0)
+        print len(a)
+        while j < len(a):
+            #print "fichier"
+            fichier = a[j]['filename']
+            self.LWGcode.addItem(fichier)
+            j = j + 1
+        #a = sorted(liste_fichiers, key=lambda x: x['ctime'],reverse=True)
+        #print a
 
     #Oglet temperature
     def BSetExtruClicked(self):
@@ -624,41 +548,42 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
     def BXClicked(self):
         travo = self.travx.get_distance()       
         self.myprinter.cmd("G91")
-        self.myprinter.cmd("G1 F5000 X%s" % (travo))
+        self.myprinter.cmd("G1 F%s X%s" % (self.speed, travo))
         self.myprinter.cmd("G90")
-        #print "G1 F5000 X%s" % (travo)
-        #print travo #travo.aficher()
+        #print "G1 F%s X%s" % (self.speed, travo)
+        #print self.speed, travo #self.speed, travo.aficher()
 
     def BXMClicked(self):
-        travo = self.travx.get_distance()       
+        self.speed, travo = self.travx.get_distance()       
         self.myprinter.cmd("G91")
-        self.myprinter.cmd("G1 F5000 X-%s" % (travo))
+        self.myprinter.cmd("G1 F%s X-%s" % (self.speed, travo))
         self.myprinter.cmd("G90")
-        #print "G1 F5000 X%s" % (travo)
-        #print travo #travo.aficher()
+        #print "G1 F%s X%s" % (self.speed, travo)
+        #print self.speed, travo #self.speed, travo.aficher()
 
     def BYClicked(self):
-        travo = self.travx.get_distance()
+        self.speed, travo = self.travx.get_distance()
         self.myprinter.cmd("G91")
-        self.myprinter.cmd("G1 F5000 Y%s" % (travo))
+        self.myprinter.cmd("G1 F%s Y%s" % (self.speed, travo))
         self.myprinter.cmd("G90")
 
     def BYMClicked(self):
-        travo = self.travx.get_distance()
+        self.speed, travo = self.travx.get_distance()
         self.myprinter.cmd("G91")
-        self.myprinter.cmd("G1 F5000 Y-%s" % (travo))
+        self.myprinter.cmd("G1 F%s Y-%s" % (self.speed, travo))
         self.myprinter.cmd("G90")
 
     def BZClicked(self):
-        travo = self.travx.get_distance()
+        self.speed, travo = self.travx.get_distance()
         self.myprinter.cmd("G91")
-        self.myprinter.cmd("G1 F5000 Z%s" % (travo))
+        self.myprinter.cmd("G1 F%s Z%s" % (self.speed, travo))
         self.myprinter.cmd("G90")
 
     def BZMClicked(self):
         travo = self.travx.get_distance()
         self.myprinter.cmd("G91")
-        self.myprinter.cmd("G1 F5000 Z-%s" % (travo))
+        self.myprinter.cmd("G1 F%s Z-%s" % (self.speed, travo))
+        print ("G1 F%s Z-%s" % (self.speed, travo))
         self.myprinter.cmd("G90")
 
     def BHXClicked(self):
@@ -770,22 +695,28 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
     def BTerminalClicked(self):
         test = self.LETerminal.text()
         print "entrer"
-        #self.worker.someFunction()
+        #self.worker.someFunction("event interne")
         #self.LWTerminal.addItem(test)#("Cible :  %s" %(test))
         self.myprinter.cmd(str(test))
+        self.LWTerminal.scrollToBottom()
+
     def updateUI(self, prog):
-        print prog
+        print "event success"
+        self.LWTerminal.addItem(prog)
+        self.LWTerminal.scrollToBottom()
 
     def retourterminal(self, data):
-        print "retour temrinal"
-        print data
+        self.LWTerminal.addItem(data)
+        #print "retour temrinal"
+        #print data
 
     
 
     fin = 0
 
     #Update des temperature et du graph
-    def update_temp(self, data):
+    def update_temp(self):
+        data = self.datalist.liste('api/printer')
         debut = time.time()
         #print data
         onPrint = data['state']['flags']['printing']
@@ -903,7 +834,8 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
         #fin = self.travx.set_temps(debut)
 
     #Update etat du job
-    def update_temp2(self, data):
+    def update_job(self):
+        data = self.datalist.liste('/api/job')
         #print data
         try:
 
@@ -958,7 +890,8 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
         return "%dh%dm%ds" %(h,m,s)
 
     #Update de la connection
-    def update_temp3(self, data):
+    def update_etat(self):
+        data = self.datalist.liste('/api/connection')
         etatprinteuse = data['current']['state']
         if etatprinteuse == "Closed" and self.timer.isActive() == 1 :
             #print "closed"
@@ -1088,7 +1021,7 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
 
     def PBCEntrerCliked(self):
         b = self.travx.get_cible()
-        print b
+        #print b
         a=self.LEClavier.text()
         self.entrerClavier(a,b)
         #self.LETerminal.setText(a)
@@ -1098,29 +1031,29 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
     def entrerClavier(self, data, cible):
         if cible == "LETerminal" :
             self.LETerminal.setText(data)
-            self.wsc.setcmd(data)
+            self.wsc.setcmd(data) ### a décomenté pour enable l envoie de cmd au parseur du terminale
             #self.test
-            print "ok"
+            #print "ok"
         if cible == "LETemExt" :
             self.LETemExt.setText(data)
-            print "ok"
+            #print "ok"
         if cible == "LETembed" :
             self.LETembed.setText(data)
-            print "ok"
+            #print "ok"
         if cible == "LEFps" :
             self.LEFps.setText(data)
-            print "ok"
+            #print "ok"
         if cible == "LEDerImg" :
             self.LEDerImg.setText(data)
-            print "ok"
+            #print "ok"
         if cible == "LEExtru" :
             self.LEExtru.setText(data)
-            print "ok"
+            #print "ok"
         if cible == "LEZhop" :
             self.LEZhop.setText(data)
-            print "ok"
+            #print "ok"
         else:
-            print"not ok"
+            #print"not ok"
             pass
         
 

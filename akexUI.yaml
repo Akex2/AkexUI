@@ -1,0 +1,8 @@
+Octoprint:
+  url: http//127.0.0.1:5000
+  apikey: 054E508852624649B8B250B341CFF639
+Printer:
+  bed : yes
+  extruder : 1
+  speed : 5000
+  
