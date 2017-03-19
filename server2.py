@@ -112,7 +112,7 @@ class wsc(QObject):
                     print b
                     self.inc = 1
                     print "premiere boucle"
-                    self.akex.someFunction(str(b))
+                    self.Qtsignal.someFunction(str(b))
                     
                 else :
                     pass
