@@ -9,12 +9,10 @@ import time
 import uuid
 import random
 import json
-import demjson
 import re
 from PyQt4 import QtCore
 from PyQt4.QtCore import QObject, pyqtSignal, SIGNAL
 from PyQt4.uic import *
-import testlib
 import asydtimer
 
 class wsc(QObject):
@@ -24,7 +22,7 @@ class wsc(QObject):
     
     def __init__(self,worker):
         #threading.Thread.__init__(self)
-        self.akex = worker
+        self.Qtsignal = worker
         #self.worker = asydtimer.myWorker()
         url = "ws://127.0.0.1:5000/sockjs/{:0>3d}/{}/websocket".format(random.randrange(0, stop=999), uuid.uuid4() )
         websocket.enableTrace(True)
@@ -107,7 +105,7 @@ class wsc(QObject):
                     print "deuxieme boucle"
                     #print (type(b))
                     #b= "alex"
-                    self.akex.someFunction(str(b))
+                    self.Qtsignal.someFunction(str(b))
                     #time.sleep(0.2)
                     
                 if (self.inc == 0) and (m is not None) :                   
