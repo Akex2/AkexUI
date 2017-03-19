@@ -1,7 +1,7 @@
 #!/bin/bash
 sleep 15
 unclutter &
-python /root/AkexUI/asyd-timer.py
+python /usr/src/AkexUI/asydtimer.py
 #sleep 2
 #service touch restart
 #python /root/asyd/asyd-timer.py
