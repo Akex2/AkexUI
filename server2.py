@@ -13,7 +13,7 @@ import re
 from PyQt4 import QtCore
 from PyQt4.QtCore import QObject, pyqtSignal, SIGNAL
 from PyQt4.uic import *
-import asydtimer
+import akexUI
 
 class wsc(QObject):
     """
