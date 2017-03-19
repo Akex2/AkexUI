@@ -150,7 +150,7 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
         #self.connect(tl, SIGNAL("update(int)"), self.updateUI)
         #tl.doWork()
 
-        with open('/root/Final/akex.yaml', 'r') as f:
+        with open('/usr/src/AkexUI/akexUI.yaml', 'r') as f:
             doc = yaml.load(f)
         url = doc["Octoprint"]["url"]
         apikey = doc["Octoprint"]["apikey"]
