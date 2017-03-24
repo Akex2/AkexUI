@@ -28,7 +28,44 @@ class Ui_Frame(object):
         Frame.resize(1024, 600)
         Frame.setMinimumSize(QtCore.QSize(1024, 600))
         Frame.setMaximumSize(QtCore.QSize(1024, 600))
-        Frame.setStyleSheet(_fromUtf8("QFrame {\n"
+        Frame.setStyleSheet(_fromUtf8("QScrollBar:vertical {\n"
+"\n"
+"  border-color: rgb(227, 227, 227);\n"
+"  border-width: 1px;\n"
+"  border: 2px solid grey;\n"
+"   border-radius: 10px;\n"
+"  background-color: rgba(255, 255, 255,0);\n"
+"  width: 25px;\n"
+"  margin: 0px 0 0px 0;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical {\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:0.5, x2:0.5, y2:0, stop:0 rgba(255, 95, 0, 255), stop:0.55 rgba(235, 148, 61, 255), stop:1 rgba(208, 156, 69, 255));/* rgba(255, 95, 0, 255);/* rgba(208, 156, 69, 255);/* qlineargradient(spread:pad, x1:1, y1:1, x2:0, y2:0, stop:0 rgba(255, 95, 0, 255), stop:0.55 rgba(235, 148, 61, 255), stop:1 rgba(208, 156, 69, 255));*/\n"
+"\n"
+"  \n"
+"  min-height: 25px;\n"
+"  border-radius: 10px;\n"
+"\n"
+"}\n"
+" QScrollBar::add-line:vertical {\n"
+"    border: 0px solid grey;\n"
+"  background-color: rgba(255,255, 255,0);\n"
+"    height: 20px;\n"
+"    subcontrol-position: bottom;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::sub-line:vertical {\n"
+"    border: 0px solid grey;\n"
+"    background-color: rgba(255,255, 255,0);\n"
+"    height: 20px;\n"
+"    subcontrol-position: top;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
+"      background: none;\n"
+"  }\n"
+"QFrame {\n"
 "    alternate-background-color: rgb(8, 12, 255);\n"
 "    selection-color: white;\n"
 "    selection-background-color: rgb(8, 20, 255);\n"
@@ -69,7 +106,8 @@ class Ui_Frame(object):
         font.setPointSize(20)
         font.setItalic(True)
         self.tabWidget1.setFont(font)
-        self.tabWidget1.setStyleSheet(_fromUtf8("QGroupBox{\n"
+        self.tabWidget1.setStyleSheet(_fromUtf8("\n"
+"QGroupBox{\n"
 "    border-color: rgba(255, 255, 255, 0);\n"
 "    margin: 0;\n"
 "    border: 0px;\n"
@@ -78,7 +116,7 @@ class Ui_Frame(object):
 "\n"
 "}\n"
 "QSlider::sub-page:horizontal {\n"
-"    background-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgba(255, 95, 0, 255), stop:0.55 rgba(235, 148, 61, 255), stop:1 rgba(208, 156, 69, 255));\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgba(0, 95, 255, 255), stop:0.55 rgba(61, 148, 235, 255), stop:1 rgba(69, 156, 208, 255));\n"
 "/*background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1,stop: 0 #66e, stop: 1 #0c0cdc);\n"
 "background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,stop: 0 #0c0cdc, stop: 1 #55f);*/\n"
 "\n"
@@ -145,12 +183,12 @@ class Ui_Frame(object):
 " }\n"
 "\n"
 "QTabBar::tab:selected {\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(255, 95, 0, 255), stop:0.0813397 rgba(255, 113, 0, 255), stop:0.119617 rgba(0, 0, 0, 0), stop:1 rgba(255, 255, 255, 0));\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 95, 255, 255), stop:0.0813397 rgba(0, 113, 255, 255), stop:0.119617 rgba(0, 0, 0, 0), stop:1 rgba(255, 255, 255, 0));\n"
 "\n"
 "\n"
 " }\n"
 "QPushButton#BHX{\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:0.5, x2:0.5, y2:0, stop:0 rgba(255, 95, 0, 255), stop:0.55 rgba(235, 148, 61, 255), stop:1 rgba(208, 156, 69, 255));\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:0.5, x2:0.5, y2:0, stop:0 rgba(0, 95, 255, 255), stop:0.55 rgba(61, 148, 235, 255), stop:1 rgba(69, 156, 208, 255));\n"
 "    /*background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(0, 0, 255, 255), stop:1 rgba(255, 255, 255, 255));\n"
 "    /*background: rgb(10, 14, 255);*/\n"
 "/*image: url(glyphicons_082.png);*/\n"
@@ -164,7 +202,7 @@ class Ui_Frame(object):
 "    padding: 10;\n"
 "}    \n"
 "QPushButton#BHY{\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:0.5, x2:0.5, y2:0, stop:0 rgba(255, 95, 0, 255), stop:0.55 rgba(235, 148, 61, 255), stop:1 rgba(208, 156, 69, 255));\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:0.5, x2:0.5, y2:0, stop:0 rgba(0, 95, 255, 255), stop:0.55 rgba(61, 148, 235, 255), stop:1 rgba(69, 156, 208, 255));\n"
 "    /*background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(0, 0, 255, 255), stop:1 rgba(255, 255, 255, 255));\n"
 "    /*background: rgb(10, 14, 255);*/\n"
 "/*image: url(glyphicons_082.png);*/\n"
@@ -178,7 +216,7 @@ class Ui_Frame(object):
 "    padding: 10;\n"
 "}    \n"
 "QPushButton#BHZ{\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:0.5, x2:0.5, y2:0, stop:0 rgba(255, 95, 0, 255), stop:0.55 rgba(235, 148, 61, 255), stop:1 rgba(208, 156, 69, 255));\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:0.5, x2:0.5, y2:0, stop:0 rgba(0, 95, 255, 255), stop:0.55 rgba(61, 148, 235, 255), stop:1 rgba(69, 156, 208, 255));\n"
 "    /*background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(0, 0, 255, 255), stop:1 rgba(255, 255, 255, 255));\n"
 "    /*background: rgb(10, 14, 255);*/\n"
 "/*image: url(glyphicons_082.png);*/\n"
@@ -204,7 +242,7 @@ class Ui_Frame(object):
 "}\n"
 "QPushButton#BRafrGcode{\n"
 "    color: rgb(207, 207, 207);\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:0.5, x2:0.5, y2:0, stop:0 rgba(255, 95, 0, 255), stop:0.55 rgba(235, 148, 61, 255), stop:1 rgba(208, 156, 69, 255));\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:0.5, x2:0.5, y2:0, stop:0 rgba(0, 95, 255, 255), stop:0.55 rgba(61, 148, 235, 255), stop:1 rgba(69, 156, 208, 255));\n"
 "    border-style: outset;\n"
 "    border-width: 2px;\n"
 "    border-radius: 20px;\n"
@@ -538,7 +576,7 @@ class Ui_Frame(object):
         font.setPointSize(25)
         self.progressBar.setFont(font)
         self.progressBar.setStyleSheet(_fromUtf8(""))
-        self.progressBar.setProperty("value", 50)
+        self.progressBar.setProperty("value", 0)
         self.progressBar.setObjectName(_fromUtf8("progressBar"))
         self.BRafrGcode = QtGui.QPushButton(self.TPrint)
         self.BRafrGcode.setGeometry(QtCore.QRect(580, 20, 51, 51))
@@ -1275,6 +1313,7 @@ class Ui_Frame(object):
         font = QtGui.QFont()
         font.setPointSize(15)
         self.LWTerminal.setFont(font)
+        self.LWTerminal.setStyleSheet(_fromUtf8(""))
         self.LWTerminal.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.LWTerminal.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.LWTerminal.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
@@ -1618,7 +1657,7 @@ class Ui_Frame(object):
         self.tabWidget1.raise_()
 
         self.retranslateUi(Frame)
-        self.tabWidget1.setCurrentIndex(0)
+        self.tabWidget1.setCurrentIndex(3)
         QtCore.QObject.connect(self.PBCAnnuler, QtCore.SIGNAL(_fromUtf8("clicked()")), self.clavier.hide)
         QtCore.QObject.connect(self.PBCAnnuler, QtCore.SIGNAL(_fromUtf8("clicked()")), self.tabWidget1.show)
         QtCore.QMetaObject.connectSlotsByName(Frame)
