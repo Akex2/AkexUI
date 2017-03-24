@@ -26,9 +26,75 @@
    <string>Frame</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QFrame, QLabel, QToolTip {
-    background-color: qradialgradient(cx: 0.50, cy: 0.5,fx: 0.5, fy: 0.5,radius: 1.0, stop: 0 #212121, stop: 1 #07031c);
-}</string>
+   <string notr="true">QScrollBar:vertical {
+
+  border-color: rgb(227, 227, 227);
+  border-width: 1px;
+  border: 2px solid grey;
+   border-radius: 10px;
+  background-color: rgba(255, 255, 255,0);
+  width: 25px;
+  margin: 0px 0 0px 0;
+}
+
+QScrollBar::handle:vertical {
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:0.5, x2:0.5, y2:0, stop:0 rgba(255, 95, 0, 255), stop:0.55 rgba(235, 148, 61, 255), stop:1 rgba(208, 156, 69, 255));/* rgba(255, 95, 0, 255);/* rgba(208, 156, 69, 255);/* qlineargradient(spread:pad, x1:1, y1:1, x2:0, y2:0, stop:0 rgba(255, 95, 0, 255), stop:0.55 rgba(235, 148, 61, 255), stop:1 rgba(208, 156, 69, 255));*/
+
+  
+  min-height: 25px;
+  border-radius: 10px;
+
+}
+ QScrollBar::add-line:vertical {
+    border: 0px solid grey;
+  background-color: rgba(255,255, 255,0);
+    height: 20px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical {
+    border: 0px solid grey;
+    background-color: rgba(255,255, 255,0);
+    height: 20px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+      background: none;
+  }
+QFrame {
+	alternate-background-color: rgb(8, 12, 255);
+	selection-color: white;
+	selection-background-color: rgb(8, 20, 255);
+	/*background-color: qradialgradient(cx: 0.50, cy: 0.5,fx: 0.5, fy: 0.5,radius: 1.0, stop: 0 #212121, stop: 1 #07031c);*/
+	background-color:qlineargradient(x1:1, y1:0, x2:1, y2:1, stop: 0 #545454, stop: 1 #07031c);
+	color: white;
+	margin: 0px;
+	border: 0px;
+}
+QTabWidget::tab-bar {
+    alignment: center;
+	margin: 0px;
+	border-width: 0px;
+	
+}
+QTabWidget {
+    margin: 0px;
+	border-width: 0px;
+}
+
+ QTabBar::tab {
+	 background-color:qlineargradient(x1:1, y1:1, x2:1, y2:1, stop: 0 #212121, stop: 1 #07031c);
+	/*border: 2px solid #C4C4C3;
+    /*border-bottom-color: #C2C7CB; /* same as the pane color */
+	border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+	color: white;
+  	padding: 10px;
+	margin: 0px;
+	border-width: 0px;
+ }</string>
   </property>
   <property name="frameShape">
    <enum>QFrame::StyledPanel</enum>
@@ -36,7 +102,7 @@
   <property name="frameShadow">
    <enum>QFrame::Raised</enum>
   </property>
-  <widget class="QTabWidget" name="tabWidget">
+  <widget class="QTabWidget" name="tabWidget1">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -45,6 +111,12 @@
      <height>600</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>51</height>
+    </size>
+   </property>
    <property name="font">
     <font>
      <pointsize>20</pointsize>
@@ -52,50 +124,147 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">QSlider::handle:horizontal {
-    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);
+    <string notr="true">
+QGroupBox{
+	border-color: rgba(255, 255, 255, 0);
+	margin: 0;
+	border: 0px;
+	border-width: 0px;
+
+
+}
+QSlider::sub-page:horizontal {
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgba(0, 95, 255, 255), stop:0.55 rgba(61, 148, 235, 255), stop:1 rgba(69, 156, 208, 255));
+/*background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1,stop: 0 #66e, stop: 1 #0c0cdc);
+background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,stop: 0 #0c0cdc, stop: 1 #55f);*/
+
+
+border: 1px solid #777;
+height: 15px;
+border-radius: 10px;
+}
+QSlider::handle:horizontal {
+	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.4, fx:0.5, fy:0.5, stop:0 rgba(0, 0, 0, 255), stop:0.479904 rgba(0, 0, 0, 255), stop:0.522685 rgba(117, 117, 117, 255), stop:1 rgba(163, 163, 163, 255));
+    /*background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);*/
     border: 1px solid #5c5c5c;
-    width: 25px;
-    margin: -9px 0; /* handle is placed by default on the contents rect of the groove. Expand outside the groove */
-    border-radius: 3px;
+    width: 40px;
+    margin: -13px 0; /* handle is placed by default on the contents rect of the groove. Expand outside the groove */
+    border-radius: 20px;
 }
 QSlider::groove:horizontal {
     border: 1px solid #999999;
-    height: 15px; /* the groove expands to the size of the slider by default. by giving it a height, it has a fixed size */
-    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #B1B1B1, stop:1 #2bff00);
+    height: 15px;  /* the groove expands to the size of the slider by default. by giving it a height, it has a fixed size */
+    /*background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #B1B1B1, stop:1 #2bff00);*/
+	/*background-color: black;*/
     margin: 2px 0;
+	border: 1px solid #777;
+	border-radius: 8px;
 }
 QProgressBar::chunk {
     background-color: #38e000;
     width: 20px;
+	margin: 0px;
+
 }
 QProgressBar {
-    background-color: (0,255,0);
-	color: black;
+	color: rgb(166, 166, 166);
+    background-color: rgba(255,255,255,0);
     width: 20px;
 	margin: 0px;
 	text-align: center;
+	border-radius: 8px;
 }
 QTabWidget::tab-bar {
+	/*background-color: qlineargradient(spread:pad, x1:0.529, y1:0, x2:0.5, y2:1, stop:0 rgba(255, 127, 0, 255), stop:0.55 rgba(235, 148, 61, 255), stop:1 rgba(80, 80, 80, 255));*/
     alignment: center;
+	margin: 0px;
+	border:0px;
+	padding : 0px
+	
+}
+QTabWidget {
+    margin: 0px;
+	border-width: 0px;
 }
 
  QTabBar::tab {
-	 background-color:qradialgradient(cx: 0.50, cy: 0.5,fx: 0.5, fy: 0.5,radius: 1.0, stop: 0 #212121, stop: 1 #07031c);
-  color: white;
-  padding: 10px;
+	background-color: rgba(255,255, 255,0);
+	 /*background-color:qlineargradient(x1:1, y1:1, x2:1, y2:1, stop: 0 #212121, stop: 1 #07031c);*/
+	/*border: 2px solid #C4C4C3;
+    /*border-bottom-color: #C2C7CB; /* same as the pane color */
+	border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+	color: white;
+  	padding: 10px;
+	margin: 0px;
+	border: 0px;
  }
 
- QTabBar::tab:selected {
-  background: #333333;
- }
+QTabBar::tab:selected {
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 95, 255, 255), stop:0.0813397 rgba(0, 113, 255, 255), stop:0.119617 rgba(0, 0, 0, 0), stop:1 rgba(255, 255, 255, 0));
 
-QPushButton{
-    background-color: #8c8c8c;
+
+ }
+QPushButton#BHX{
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:0.5, x2:0.5, y2:0, stop:0 rgba(0, 95, 255, 255), stop:0.55 rgba(61, 148, 235, 255), stop:1 rgba(69, 156, 208, 255));
+	/*background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(0, 0, 255, 255), stop:1 rgba(255, 255, 255, 255));
+	/*background: rgb(10, 14, 255);*/
+/*image: url(glyphicons_082.png);*/
+/*background-color:  qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(171, 171, 171, 255));*/
+  /*background-color: #8c8c8c;*/
     border-style: outset;
     border-width: 2px;
-    border-radius: 15px;
-    border-color: beige;
+    border-radius: 20px;
+    border-color: rgba(255,255,255,0);
+    font: bold 20px;
+    padding: 10;
+}	
+QPushButton#BHY{
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:0.5, x2:0.5, y2:0, stop:0 rgba(0, 95, 255, 255), stop:0.55 rgba(61, 148, 235, 255), stop:1 rgba(69, 156, 208, 255));
+	/*background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(0, 0, 255, 255), stop:1 rgba(255, 255, 255, 255));
+	/*background: rgb(10, 14, 255);*/
+/*image: url(glyphicons_082.png);*/
+/*background-color:  qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(171, 171, 171, 255));*/
+  /*background-color: #8c8c8c;*/
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 20px;
+    border-color: rgba(255,255,255,0);
+    font: bold 20px;
+    padding: 10;
+}	
+QPushButton#BHZ{
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:0.5, x2:0.5, y2:0, stop:0 rgba(0, 95, 255, 255), stop:0.55 rgba(61, 148, 235, 255), stop:1 rgba(69, 156, 208, 255));
+	/*background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(0, 0, 255, 255), stop:1 rgba(255, 255, 255, 255));
+	/*background: rgb(10, 14, 255);*/
+/*image: url(glyphicons_082.png);*/
+/*background-color:  qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(171, 171, 171, 255));*/
+  /*background-color: #8c8c8c;*/
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 20px;
+    border-color: rgba(255,255,255,0);
+    font: bold 20px;
+    padding: 10;
+}	
+QPushButton{
+	color: rgb(207, 207, 207);
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(62, 62, 62, 255));
+    /*background-color: #8c8c8c;*/
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 20px;
+    border-color: rgba(255,255,255,0);
+    font: bold 20px;
+    padding: 0;
+}
+QPushButton#BRafrGcode{
+	color: rgb(207, 207, 207);
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:0.5, x2:0.5, y2:0, stop:0 rgba(0, 95, 255, 255), stop:0.55 rgba(61, 148, 235, 255), stop:1 rgba(69, 156, 208, 255));
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 20px;
+    border-color: rgba(255,255,255,0);
     font: bold 20px;
     padding: 10;
 }
@@ -103,9 +272,128 @@ QPushButton:pressed {
     background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
+QPushButton:checked {
+ border-style: outset;
+    border-width: 2px;
+    border-radius: 15px;
+    border-color: beige;
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(56, 56, 56, 255), stop:1 rgba(77, 77, 77, 255));
+    /*background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);*/
+}
+QPushButton:!enabled{
+	color: rgb(94, 94, 94);
+ 
+}
 QLabel {
-    background-color: qradialgradient(cx: 0.50, cy: 0.5,fx: 0.5, fy: 0.5,radius: 1.0, stop: 0 #212121, stop: 1 #07031c);
+    background-color:rgba(255,255, 255,0); /*qradialgradient(cx: 0.50, cy: 0.5,fx: 0.5, fy: 0.5,radius: 1.0, stop: 0 #212121, stop: 1 #07031c);*/
 	color: white;
+}
+QLineEdit {
+	border-radius: 20px;
+	background-color: rgb(64, 64, 64);
+	color: white;
+}
+QComboBox{
+	border-radius: 20px;
+	color: white ;
+	selection-background-color:rgb(15, 39, 255);
+	background-color: rgb(89, 89, 89);
+}
+QComboBox::item:selected:active {
+	selection-background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(171, 171, 171, 255));
+	/*selection-background-color: rgb(25, 255, 25);*/
+	/*background-color: rgb(255, 115, 255);*/
+    background: (15, 39, 255);/*qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #6a6ea9, stop: 1 #888dd9);*/
+}
+QCombobox:!editable{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
+    color:white;
+}
+/*QComboBox:editable {
+    background: blue;
+    color: pink;
+	
+}*/
+QComboBox:on
+{
+    padding-top: 0px;
+    padding-left: 0px;
+    color: white;
+    background-color: black;
+    selection-background-color: #ffaa00;
+}
+QComboBox::drop-down {
+	
+	background-color: rgb(139, 139, 139);
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 35px;
+
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    /*border-left-style: solid; /* just a single line */
+    border-top-right-radius: 20px; /* same radius as the QComboBox */
+    border-bottom-right-radius: 20px;
+}
+QComboBox QAbstractItemView {
+    selection-background-color:  qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(171, 171, 171, 255));
+    background-color: #2c2c2c;
+    border-width: 1px;
+    padding: 5px 0px 5px 0px;
+    border-style: solid;
+    border-color: #4d4d4d;
+    color: #cbcbcb;
+    selection-color: #FFFFFF;
+}
+QListWidget QAbstractItemView {
+    selection-background-color:  qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(171, 171, 171, 255));
+    background-color: #2c2c2c;
+    border-width: 1px;
+    padding: 5px 0px 5px 0px;
+    border-style: solid;
+    border-color: #4d4d4d;
+    color: #cbcbcb;
+    selection-color: #FFFFFF;
+}
+
+QListWidget {
+	selection-background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(171, 171, 171, 255));
+	color: white;
+	border-radius: 20px;
+	/*selection-background-color:rgb(15, 39, 255);*/
+}
+QListWidget::item:selected:active {
+	selection-background-color:  qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(171, 171, 171, 255));
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(171, 171, 171, 255));
+	/*background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 255, 255), stop:1 rgba(0, 81, 255, 255));*/
+	/*background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));*/
+	/*background: rgb(24, 16, 255);*/
+    /*background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #6a6ea9, stop: 1 #888dd9);*/
+}
+QRadioButton::indicator {
+    width: 30px;
+    height: 30px;
+	border-radius: 10px;
+}
+QRadioButton::indicator::checked {
+	border-radius: 15px;
+	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(0, 0, 0, 255), stop:0.479904 rgba(0, 0, 0, 255), stop:0.522685 rgba(117, 117, 117, 255), stop:1 rgba(163, 163, 163, 255));
+   /* image: url(:/images/radiobutton_checked.png);*/
+}
+QRadioButton{
+padding: 1px 0px 1px 3px;
+color: white;
+width: 25px;
+height: 25px;
+}
+QRadioButton::indicator::unchecked {
+   border-radius: 15px;
+	background-color: rgb(255,255,255);
+   /* image: url(:/images/radiobutton_checked.png);*/
 }</string>
    </property>
    <property name="currentIndex">
@@ -115,82 +403,28 @@ QLabel {
     <attribute name="title">
      <string>Connexion</string>
     </attribute>
-    <widget class="QPushButton" name="BDisconect">
-     <property name="geometry">
-      <rect>
-       <x>660</x>
-       <y>124</y>
-       <width>221</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Deconnecte</string>
-     </property>
-    </widget>
     <widget class="QComboBox" name="CBport">
      <property name="geometry">
       <rect>
        <x>80</x>
        <y>70</y>
        <width>491</width>
-       <height>41</height>
+       <height>51</height>
       </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>51</height>
+      </size>
      </property>
      <property name="font">
       <font>
        <pointsize>15</pointsize>
       </font>
      </property>
-    </widget>
-    <widget class="QPushButton" name="BConnect">
-     <property name="geometry">
-      <rect>
-       <x>660</x>
-       <y>70</y>
-       <width>221</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Connection</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="BConectRafr">
-     <property name="geometry">
-      <rect>
-       <x>660</x>
-       <y>184</y>
-       <width>221</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Rafraichir</string>
+     <property name="editable">
+      <bool>false</bool>
      </property>
     </widget>
     <widget class="QWidget" name="gridLayoutWidget_4">
@@ -259,74 +493,111 @@ QLabel {
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="gridLayoutWidget_6">
+    <widget class="QWidget" name="gridLayoutWidget_10">
+     <property name="geometry">
+      <rect>
+       <x>650</x>
+       <y>60</y>
+       <width>253</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_10">
+      <item row="0" column="0">
+       <widget class="QPushButton" name="BConnect">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>51</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Connection</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="BDisconect">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>51</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Deconnecte</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="BConectRafr">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>51</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Rafraichir</string>
+        </property>
+        <property name="default">
+         <bool>false</bool>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_12">
      <property name="geometry">
       <rect>
        <x>80</x>
        <y>280</y>
-       <width>521</width>
-       <height>151</height>
+       <width>451</width>
+       <height>201</height>
       </rect>
      </property>
-     <layout class="QGridLayout" name="gridLayout_6">
-      <item row="1" column="0">
-       <widget class="QPushButton" name="PBArret">
-        <property name="minimumSize">
+     <layout class="QGridLayout" name="gridLayout_12">
+      <item row="5" column="0">
+       <spacer name="verticalSpacer_11">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
          <size>
-          <width>0</width>
-          <height>41</height>
+          <width>20</width>
+          <height>40</height>
          </size>
         </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <weight>75</weight>
-          <italic>false</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Arreter</string>
-        </property>
-       </widget>
+       </spacer>
       </item>
-      <item row="0" column="2">
-       <widget class="QRadioButton" name="RBOcto">
-        <property name="font">
-         <font>
-          <pointsize>15</pointsize>
-         </font>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::StrongFocus</enum>
-        </property>
-        <property name="text">
-         <string>Octoprint</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QPushButton" name="PBReboot">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>41</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <weight>75</weight>
-          <italic>false</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Redemmarer</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
+      <item row="4" column="2" rowspan="2">
        <widget class="QRadioButton" name="RBSysteme">
         <property name="font">
          <font>
@@ -338,7 +609,7 @@ QLabel {
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
+      <item row="2" column="2" rowspan="2">
        <widget class="QRadioButton" name="RBRedeem">
         <property name="font">
          <font>
@@ -360,11 +631,81 @@ QLabel {
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>50</width>
-          <height>30</height>
+          <width>10</width>
+          <height>20</height>
          </size>
         </property>
        </spacer>
+      </item>
+      <item row="0" column="0">
+       <spacer name="verticalSpacer_10">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="3" column="0" rowspan="2">
+       <widget class="QPushButton" name="PBArret">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>51</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Arreter</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" rowspan="2">
+       <widget class="QPushButton" name="PBReboot">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>51</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Redemmarer</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" rowspan="2">
+       <widget class="QRadioButton" name="RBOcto">
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::StrongFocus</enum>
+        </property>
+        <property name="text">
+         <string>Octoprint</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -397,6 +738,12 @@ QLabel {
        <height>51</height>
       </rect>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>51</height>
+      </size>
+     </property>
      <property name="font">
       <font>
        <pointsize>-1</pointsize>
@@ -423,6 +770,12 @@ QLabel {
        <width>100</width>
        <height>51</height>
       </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>51</height>
+      </size>
      </property>
      <property name="font">
       <font>
@@ -454,6 +807,12 @@ QLabel {
        <height>51</height>
       </rect>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>51</height>
+      </size>
+     </property>
      <property name="font">
       <font>
        <pointsize>-1</pointsize>
@@ -474,6 +833,12 @@ QLabel {
        <width>100</width>
        <height>51</height>
       </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>51</height>
+      </size>
      </property>
      <property name="font">
       <font>
@@ -498,6 +863,12 @@ QLabel {
        <width>151</width>
        <height>51</height>
       </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>51</height>
+      </size>
      </property>
      <property name="font">
       <font>
@@ -541,12 +912,18 @@ QLabel {
        <height>51</height>
       </rect>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>51</height>
+      </size>
+     </property>
      <property name="text">
       <string/>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>glyphicons_082.png</normaloff>glyphicons_082.png</iconset>
+      <iconset resource="alex.qrc">
+       <normaloff>:/alex/glyphicons_082.png</normaloff>:/alex/glyphicons_082.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -768,7 +1145,7 @@ QLabel {
         <property name="minimumSize">
          <size>
           <width>130</width>
-          <height>0</height>
+          <height>51</height>
          </size>
         </property>
         <property name="font">
@@ -786,6 +1163,18 @@ QLabel {
       </item>
       <item row="1" column="1">
        <widget class="extQLineEdit" name="LETemExt">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>51</height>
+         </size>
+        </property>
+        <property name="baseSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="font">
          <font>
           <pointsize>20</pointsize>
@@ -864,10 +1253,19 @@ QLabel {
       </item>
       <item row="1" column="5">
        <widget class="extQLineEdit" name="LETembed">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>51</height>
+         </size>
+        </property>
         <property name="font">
          <font>
           <pointsize>20</pointsize>
          </font>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -875,6 +1273,12 @@ QLabel {
        <widget class="QPushButton" name="PBExtruOff">
         <property name="enabled">
          <bool>true</bool>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>51</height>
+         </size>
         </property>
         <property name="font">
          <font>
@@ -894,7 +1298,7 @@ QLabel {
         <property name="minimumSize">
          <size>
           <width>130</width>
-          <height>0</height>
+          <height>51</height>
          </size>
         </property>
         <property name="font">
@@ -914,6 +1318,12 @@ QLabel {
        <widget class="QPushButton" name="PBBedOff">
         <property name="enabled">
          <bool>true</bool>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>51</height>
+         </size>
         </property>
         <property name="font">
          <font>
@@ -947,628 +1357,38 @@ QLabel {
     <attribute name="title">
      <string>Control</string>
     </attribute>
-    <widget class="QPushButton" name="BVitesse">
-     <property name="geometry">
-      <rect>
-       <x>450</x>
-       <y>420</y>
-       <width>161</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Vitesse</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="BHY">
-     <property name="geometry">
-      <rect>
-       <x>390</x>
-       <y>160</y>
-       <width>61</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normaloff>glyphicons_020_home.png</normaloff>glyphicons_020_home.png</iconset>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="BMotor">
-     <property name="geometry">
-      <rect>
-       <x>820</x>
-       <y>80</y>
-       <width>171</width>
-       <height>131</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Moteur Off</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="BECent">
-     <property name="geometry">
-      <rect>
-       <x>720</x>
-       <y>260</y>
-       <width>81</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>100</string>
-     </property>
-     <property name="checkable">
-      <bool>false</bool>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="BED">
-     <property name="geometry">
-      <rect>
-       <x>630</x>
-       <y>260</y>
-       <width>81</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>10</string>
-     </property>
-     <property name="checkable">
-      <bool>false</bool>
-     </property>
-    </widget>
-    <widget class="QSlider" name="SFan">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>350</y>
-       <width>341</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="BHX">
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>160</y>
-       <width>61</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normaloff>glyphicons_020_home.png</normaloff>glyphicons_020_home.png</iconset>
-     </property>
-    </widget>
-    <widget class="QLabel" name="LTFan">
+    <widget class="QWidget" name="gridLayoutWidget_8">
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>350</y>
-       <width>67</width>
-       <height>41</height>
+       <y>320</y>
+       <width>1021</width>
+       <height>231</height>
       </rect>
      </property>
-     <property name="font">
-      <font>
-       <pointsize>15</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>0</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="LTFlux">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>490</y>
-       <width>67</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>15</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>100</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="BEC">
-     <property name="geometry">
-      <rect>
-       <x>540</x>
-       <y>260</y>
-       <width>81</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>5</string>
-     </property>
-     <property name="checkable">
-      <bool>false</bool>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="BZ_2">
-     <property name="geometry">
-      <rect>
-       <x>690</x>
-       <y>80</y>
-       <width>91</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Z-</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="BFOFF">
-     <property name="geometry">
-      <rect>
-       <x>820</x>
-       <y>260</y>
-       <width>161</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Fan off</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="BFan">
-     <property name="geometry">
-      <rect>
-       <x>450</x>
-       <y>350</y>
-       <width>161</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>161</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Ventilation</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="BX">
-     <property name="geometry">
-      <rect>
-       <x>60</x>
-       <y>80</y>
-       <width>91</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>X</string>
-     </property>
-     <property name="autoExclusive">
-      <bool>false</bool>
-     </property>
-    </widget>
-    <widget class="QSlider" name="SVitesse">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>420</y>
-       <width>341</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="maximum">
-      <number>200</number>
-     </property>
-     <property name="value">
-      <number>100</number>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="BY">
-     <property name="geometry">
-      <rect>
-       <x>320</x>
-       <y>80</y>
-       <width>91</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Y</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="BExtru">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>260</y>
-       <width>121</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Extrude</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="BZ">
-     <property name="geometry">
-      <rect>
-       <x>590</x>
-       <y>80</y>
-       <width>91</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Z</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="BRetra">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>260</y>
-       <width>131</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Retract</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="BY_2">
-     <property name="geometry">
-      <rect>
-       <x>420</x>
-       <y>80</y>
-       <width>91</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Y-</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="LTVitesse">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>420</y>
-       <width>67</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>15</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>100</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="BHZ">
-     <property name="geometry">
-      <rect>
-       <x>650</x>
-       <y>160</y>
-       <width>61</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normaloff>glyphicons_020_home.png</normaloff>glyphicons_020_home.png</iconset>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="BFlux">
-     <property name="geometry">
-      <rect>
-       <x>450</x>
-       <y>490</y>
-       <width>161</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Flux</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="BX_2">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>80</y>
-       <width>91</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>X-</string>
-     </property>
-     <property name="autoExclusive">
-      <bool>false</bool>
-     </property>
-    </widget>
-    <widget class="QSlider" name="SliderFlux">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>500</y>
-       <width>341</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="maximum">
-      <number>150</number>
-     </property>
-     <property name="sliderPosition">
-      <number>99</number>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-    <widget class="extQLineEdit" name="LEExtru">
-     <property name="geometry">
-      <rect>
-       <x>350</x>
-       <y>260</y>
-       <width>161</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>15</pointsize>
-      </font>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="PBAlimOn">
-     <property name="geometry">
-      <rect>
-       <x>700</x>
-       <y>376</y>
-       <width>99</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>On</string>
-     </property>
-     <property name="checkable">
-      <bool>true</bool>
-     </property>
-     <property name="autoExclusive">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="PBAlimOff">
-     <property name="geometry">
-      <rect>
-       <x>850</x>
-       <y>376</y>
-       <width>99</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Off</string>
-     </property>
-     <property name="autoExclusive">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QLabel" name="LAlim">
-     <property name="geometry">
-      <rect>
-       <x>730</x>
-       <y>330</y>
-       <width>191</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>20</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Alimentation</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QWidget" name="horizontalLayoutWidget_2">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>981</width>
-       <height>61</height>
-      </rect>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <widget class="QPushButton" name="BZZU">
+     <layout class="QGridLayout" name="gridLayout_8">
+      <item row="0" column="4">
+       <spacer name="horizontalSpacer_13">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Minimum</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="2" column="5">
+       <widget class="QPushButton" name="BFlux">
         <property name="minimumSize">
          <size>
-          <width>130</width>
-          <height>41</height>
+          <width>0</width>
+          <height>51</height>
          </size>
         </property>
         <property name="font">
@@ -1580,23 +1400,71 @@ QLabel {
          </font>
         </property>
         <property name="text">
-         <string>0.01</string>
-        </property>
-        <property name="checkable">
-         <bool>true</bool>
-        </property>
-        <property name="checked">
-         <bool>false</bool>
-        </property>
-        <property name="autoExclusive">
-         <bool>true</bool>
+         <string>Flux</string>
         </property>
        </widget>
       </item>
-      <item>
-       <spacer name="horizontalSpacer_3">
+      <item row="2" column="3">
+       <widget class="QSlider" name="SliderFlux">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>51</height>
+         </size>
+        </property>
+        <property name="maximum">
+         <number>150</number>
+        </property>
+        <property name="sliderPosition">
+         <number>99</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <spacer name="horizontalSpacer_12">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>10</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="3">
+       <widget class="QSlider" name="SVitesse">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>51</height>
+         </size>
+        </property>
+        <property name="maximum">
+         <number>200</number>
+        </property>
+        <property name="value">
+         <number>100</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <spacer name="horizontalSpacer_11">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Minimum</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -1606,148 +1474,150 @@ QLabel {
         </property>
        </spacer>
       </item>
-      <item>
-       <widget class="QPushButton" name="BZU">
-        <property name="minimumSize">
-         <size>
-          <width>130</width>
-          <height>41</height>
-         </size>
-        </property>
+      <item row="2" column="1">
+       <widget class="QLabel" name="LTFlux">
         <property name="font">
          <font>
-          <pointsize>-1</pointsize>
-          <weight>75</weight>
-          <italic>false</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>0.1</string>
-        </property>
-        <property name="checkable">
-         <bool>true</bool>
-        </property>
-        <property name="autoExclusive">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_4">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="BU">
-        <property name="minimumSize">
-         <size>
-          <width>130</width>
-          <height>41</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <weight>75</weight>
-          <italic>false</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>1</string>
-        </property>
-        <property name="checkable">
-         <bool>true</bool>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-        <property name="autoExclusive">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_5">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="BD">
-        <property name="minimumSize">
-         <size>
-          <width>130</width>
-          <height>41</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <weight>75</weight>
-          <italic>false</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>10</string>
-        </property>
-        <property name="checkable">
-         <bool>true</bool>
-        </property>
-        <property name="autoExclusive">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_6">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="BC">
-        <property name="minimumSize">
-         <size>
-          <width>130</width>
-          <height>41</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <weight>75</weight>
-          <italic>false</italic>
-          <bold>true</bold>
+          <pointsize>15</pointsize>
          </font>
         </property>
         <property name="text">
          <string>100</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="6">
+       <spacer name="horizontalSpacer_10">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="5">
+       <widget class="QPushButton" name="BVitesse">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>51</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Vitesse</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="LTVitesse">
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>100</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5">
+       <widget class="QPushButton" name="BFan">
+        <property name="minimumSize">
+         <size>
+          <width>161</width>
+          <height>51</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Ventilation</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QSlider" name="SFan">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>51</height>
+         </size>
+        </property>
+        <property name="maximum">
+         <number>100</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="LTFan">
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="7">
+       <widget class="QPushButton" name="PBAlimOn">
+        <property name="minimumSize">
+         <size>
+          <width>80</width>
+          <height>51</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>On</string>
+        </property>
         <property name="checkable">
          <bool>true</bool>
         </property>
@@ -1756,7 +1626,935 @@ QLabel {
         </property>
        </widget>
       </item>
+      <item row="1" column="7" colspan="3">
+       <widget class="QLabel" name="LAlim">
+        <property name="font">
+         <font>
+          <pointsize>20</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Alimentation</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="9">
+       <widget class="QPushButton" name="PBAlimOff">
+        <property name="minimumSize">
+         <size>
+          <width>80</width>
+          <height>51</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Off</string>
+        </property>
+        <property name="autoExclusive">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="8">
+       <spacer name="horizontalSpacer_7">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="7" colspan="3">
+       <widget class="QPushButton" name="BFOFF">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>51</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Fan off</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="10">
+       <spacer name="horizontalSpacer_8">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>10</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
      </layout>
+    </widget>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>1024</width>
+       <height>311</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QWidget" name="horizontalLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1031</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <spacer name="horizontalSpacer_14">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="BZZU">
+         <property name="minimumSize">
+          <size>
+           <width>130</width>
+           <height>51</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>0.01</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="BZU">
+         <property name="minimumSize">
+          <size>
+           <width>130</width>
+           <height>51</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>0.1</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="BU">
+         <property name="minimumSize">
+          <size>
+           <width>130</width>
+           <height>51</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="BD">
+         <property name="minimumSize">
+          <size>
+           <width>130</width>
+           <height>51</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>10</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="BC">
+         <property name="minimumSize">
+          <size>
+           <width>130</width>
+           <height>51</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>100</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_15">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget_9">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>70</y>
+        <width>811</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_9">
+       <item row="0" column="2" colspan="2">
+        <widget class="QPushButton" name="BX">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>51</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>X</string>
+         </property>
+         <property name="autoExclusive">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="5" colspan="2">
+        <widget class="QPushButton" name="BX_2">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>51</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>X-</string>
+         </property>
+         <property name="autoExclusive">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="7">
+        <spacer name="horizontalSpacer_21">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Minimum</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="6">
+        <spacer name="horizontalSpacer_23">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Minimum</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="17">
+        <spacer name="horizontalSpacer_19">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>10</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="11">
+        <spacer name="horizontalSpacer_18">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>10</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="0">
+        <spacer name="horizontalSpacer_16">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>10</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="12" colspan="2">
+        <widget class="QPushButton" name="BY_2">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>51</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Y-</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="10" colspan="3">
+        <widget class="QPushButton" name="BHY">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>51</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="alex.qrc">
+           <normaloff>:/alex/glyphicons_020_home.png</normaloff>:/alex/glyphicons_020_home.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <spacer name="horizontalSpacer_17">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>10</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="20">
+        <spacer name="horizontalSpacer_20">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>10</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="2">
+        <spacer name="horizontalSpacer_22">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Minimum</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="14">
+        <spacer name="horizontalSpacer_24">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Minimum</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="3" colspan="3">
+        <widget class="QPushButton" name="BHX">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>51</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="alex.qrc">
+           <normaloff>:/alex/glyphicons_020_home.png</normaloff>:/alex/glyphicons_020_home.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="9" colspan="2">
+        <widget class="QPushButton" name="BY">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>51</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Y</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="15" colspan="2">
+        <widget class="QPushButton" name="BZ">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>51</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Z</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="18" colspan="2">
+        <widget class="QPushButton" name="BZ_2">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>51</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Z-</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="16" colspan="3">
+        <widget class="QPushButton" name="BHZ">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>51</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="alex.qrc">
+           <normaloff>:/alex/glyphicons_020_home.png</normaloff>:/alex/glyphicons_020_home.png</iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget_11">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>220</y>
+        <width>1021</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_11">
+       <item row="0" column="5">
+        <spacer name="horizontalSpacer_28">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>10</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="4">
+        <widget class="extQLineEdit" name="LEExtru">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>51</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="7">
+        <widget class="QPushButton" name="BED">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>51</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>10</string>
+         </property>
+         <property name="checkable">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <spacer name="horizontalSpacer_25">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>10</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButton" name="BRetra">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>51</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Retract</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="BExtru">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>51</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Extrude</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="8">
+        <widget class="QPushButton" name="BECent">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>51</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>100</string>
+         </property>
+         <property name="checkable">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="9">
+        <spacer name="horizontalSpacer_29">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>10</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="3">
+        <spacer name="horizontalSpacer_27">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>10</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="6">
+        <widget class="QPushButton" name="BEC">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>51</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>5</string>
+         </property>
+         <property name="checkable">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="BMotor">
+      <property name="geometry">
+       <rect>
+        <x>830</x>
+        <y>80</y>
+        <width>171</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Moteur Off</string>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QWidget" name="TCam">
@@ -1787,10 +2585,10 @@ QLabel {
     <widget class="QWidget" name="gridLayoutWidget_7">
      <property name="geometry">
       <rect>
-       <x>760</x>
+       <x>680</x>
        <y>20</y>
-       <width>171</width>
-       <height>481</height>
+       <width>321</width>
+       <height>521</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_7">
@@ -1799,7 +2597,25 @@ QLabel {
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>41</height>
+          <height>51</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="extQLineEdit" name="LEFps">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>51</height>
          </size>
         </property>
         <property name="font">
@@ -1825,6 +2641,39 @@ QLabel {
         </property>
        </spacer>
       </item>
+      <item row="12" column="0">
+       <widget class="QLabel" name="LTime_2">
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="0">
+       <widget class="extQLineEdit" name="LEZhop">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>51</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
       <item row="14" column="0">
        <spacer name="verticalSpacer_5">
         <property name="orientation">
@@ -1838,8 +2687,8 @@ QLabel {
         </property>
        </spacer>
       </item>
-      <item row="5" column="0">
-       <spacer name="verticalSpacer_2">
+      <item row="2" column="0">
+       <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
@@ -1851,20 +2700,60 @@ QLabel {
         </property>
        </spacer>
       </item>
-      <item row="4" column="0">
-       <widget class="QComboBox" name="CBTime">
+      <item row="15" column="0">
+       <widget class="QPushButton" name="BSaveTime">
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>41</height>
+          <height>51</height>
          </size>
         </property>
         <property name="font">
          <font>
-          <pointsize>15</pointsize>
+          <pointsize>-1</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
          </font>
         </property>
+        <property name="text">
+         <string>Sauver</string>
+        </property>
        </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="BRafCam">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>51</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Rafraichir</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="0">
+       <spacer name="verticalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
       </item>
       <item row="9" column="0">
        <widget class="QLabel" name="LDerImg">
@@ -1881,13 +2770,62 @@ QLabel {
         </property>
        </widget>
       </item>
+      <item row="5" column="0">
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="LFps">
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>fps</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QComboBox" name="CBTime">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>51</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>20</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
       <item row="3" column="0">
        <widget class="QLabel" name="LTime">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
         </property>
         <property name="font">
          <font>
@@ -1908,140 +2846,6 @@ QLabel {
         </property>
        </widget>
       </item>
-      <item row="12" column="0">
-       <widget class="QLabel" name="LTime_2">
-        <property name="font">
-         <font>
-          <pointsize>15</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QPushButton" name="BRafCam">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>41</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <weight>75</weight>
-          <italic>false</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Rafraichir</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <widget class="extQLineEdit" name="LEFps">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>41</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>15</pointsize>
-         </font>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="11" column="0">
-       <spacer name="verticalSpacer_4">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="15" column="0">
-       <widget class="QPushButton" name="BSaveTime">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>41</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <weight>75</weight>
-          <italic>false</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Sauver</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="LFps">
-        <property name="font">
-         <font>
-          <pointsize>15</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>fps</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="13" column="0">
-       <widget class="extQLineEdit" name="LEZhop">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>41</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>15</pointsize>
-         </font>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
      </layout>
     </widget>
    </widget>
@@ -2053,9 +2857,9 @@ QLabel {
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>500</y>
-       <width>811</width>
-       <height>41</height>
+       <y>490</y>
+       <width>831</width>
+       <height>51</height>
       </rect>
      </property>
      <property name="font">
@@ -2072,7 +2876,7 @@ QLabel {
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>981</width>
+       <width>1001</width>
        <height>461</height>
       </rect>
      </property>
@@ -2080,6 +2884,9 @@ QLabel {
       <font>
        <pointsize>15</pointsize>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
      <property name="verticalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -2100,10 +2907,10 @@ QLabel {
     <widget class="QPushButton" name="BTerminal">
      <property name="geometry">
       <rect>
-       <x>830</x>
-       <y>500</y>
+       <x>850</x>
+       <y>490</y>
        <width>161</width>
-       <height>41</height>
+       <height>51</height>
       </rect>
      </property>
      <property name="font">
@@ -2257,6 +3064,71 @@ QProgressBar::chunk {
      </size>
     </property>
     <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="1">
+      <widget class="QPushButton" name="PBC8">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>8</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QPushButton" name="PBC9">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>9</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="PBC5">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>5</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="PBC4">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>4</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QPushButton" name="PBC2">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>2</string>
+       </property>
+      </widget>
+     </item>
      <item row="2" column="2">
       <widget class="QPushButton" name="PBC3">
        <property name="minimumSize">
@@ -2267,6 +3139,19 @@ QProgressBar::chunk {
        </property>
        <property name="text">
         <string>3</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QPushButton" name="PBC7">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>7</string>
        </property>
       </widget>
      </item>
@@ -2293,84 +3178,6 @@ QProgressBar::chunk {
        </property>
        <property name="text">
         <string>6</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QPushButton" name="PBC2">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>2</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QPushButton" name="PBC5">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>5</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="2">
-      <widget class="QPushButton" name="PBC9">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>9</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QPushButton" name="PBC7">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>7</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QPushButton" name="PBC4">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>4</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QPushButton" name="PBC8">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>8</string>
        </property>
       </widget>
      </item>
@@ -2463,211 +3270,6 @@ QProgressBar::chunk {
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_3">
-     <item row="1" column="2">
-      <widget class="QPushButton" name="PBCF">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <italic>false</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>F</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QPushButton" name="PBCP">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <italic>false</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>P</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="0" colspan="3">
-      <widget class="QPushButton" name="PBCEspace">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QPushButton" name="PBCX">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <italic>false</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>X</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QPushButton" name="PBCI">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <italic>false</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>I</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="2">
-      <widget class="QPushButton" name="PBCZ">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <italic>false</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Z</string>
-       </property>
-       <property name="flat">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QPushButton" name="PBCE">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <italic>false</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>E</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QPushButton" name="PBCY">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <italic>false</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Y</string>
-       </property>
-      </widget>
-     </item>
      <item row="3" column="1">
       <widget class="QPushButton" name="PBCH">
        <property name="sizePolicy">
@@ -2722,8 +3324,8 @@ QProgressBar::chunk {
        </property>
       </widget>
      </item>
-     <item row="3" column="2">
-      <widget class="QPushButton" name="PBCT">
+     <item row="2" column="1">
+      <widget class="QPushButton" name="PBCI">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -2745,12 +3347,25 @@ QProgressBar::chunk {
         </font>
        </property>
        <property name="text">
-        <string>T</string>
+        <string>I</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
-      <widget class="QPushButton" name="PBCS">
+     <item row="4" column="0" colspan="3">
+      <widget class="QPushButton" name="PBCEspace">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="PBCY">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -2772,7 +3387,34 @@ QProgressBar::chunk {
         </font>
        </property>
        <property name="text">
-        <string>S</string>
+        <string>Y</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QPushButton" name="PBCX">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>-1</pointsize>
+         <weight>75</weight>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>X</string>
        </property>
       </widget>
      </item>
@@ -2803,11 +3445,176 @@ QProgressBar::chunk {
        </property>
       </widget>
      </item>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="PBCS">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>-1</pointsize>
+         <weight>75</weight>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>S</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="PBCE">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>-1</pointsize>
+         <weight>75</weight>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>E</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="QPushButton" name="PBCT">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>-1</pointsize>
+         <weight>75</weight>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>T</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QPushButton" name="PBCZ">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>-1</pointsize>
+         <weight>75</weight>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Z</string>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QPushButton" name="PBCF">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>-1</pointsize>
+         <weight>75</weight>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>F</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="PBCP">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>-1</pointsize>
+         <weight>75</weight>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>P</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
   </widget>
   <zorder>clavier</zorder>
-  <zorder>tabWidget</zorder>
+  <zorder>tabWidget1</zorder>
  </widget>
  <customwidgets>
   <customwidget>
@@ -2829,7 +3636,9 @@ QProgressBar::chunk {
    </slots>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="alex.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>PBCAnnuler</sender>
@@ -2850,7 +3659,7 @@ QProgressBar::chunk {
   <connection>
    <sender>PBCAnnuler</sender>
    <signal>clicked()</signal>
-   <receiver>tabWidget</receiver>
+   <receiver>tabWidget1</receiver>
    <slot>show()</slot>
    <hints>
     <hint type="sourcelabel">

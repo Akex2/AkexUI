@@ -1657,7 +1657,7 @@ class Ui_Frame(object):
         self.tabWidget1.raise_()
 
         self.retranslateUi(Frame)
-        self.tabWidget1.setCurrentIndex(3)
+        self.tabWidget1.setCurrentIndex(0)
         QtCore.QObject.connect(self.PBCAnnuler, QtCore.SIGNAL(_fromUtf8("clicked()")), self.clavier.hide)
         QtCore.QObject.connect(self.PBCAnnuler, QtCore.SIGNAL(_fromUtf8("clicked()")), self.tabWidget1.show)
         QtCore.QMetaObject.connectSlotsByName(Frame)
