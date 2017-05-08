@@ -554,7 +554,7 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
         #print self.speed, travo #self.speed, travo.aficher()
 
     def BXMClicked(self):
-        self.speed, travo = self.travx.get_distance()       
+        travo = self.travx.get_distance()       
         self.myprinter.cmd("G91")
         self.myprinter.cmd("G1 F%s X-%s" % (self.speed, travo))
         self.myprinter.cmd("G90")
@@ -562,19 +562,19 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
         #print self.speed, travo #self.speed, travo.aficher()
 
     def BYClicked(self):
-        self.speed, travo = self.travx.get_distance()
+        travo = self.travx.get_distance()
         self.myprinter.cmd("G91")
         self.myprinter.cmd("G1 F%s Y%s" % (self.speed, travo))
         self.myprinter.cmd("G90")
 
     def BYMClicked(self):
-        self.speed, travo = self.travx.get_distance()
+        travo = self.travx.get_distance()
         self.myprinter.cmd("G91")
         self.myprinter.cmd("G1 F%s Y-%s" % (self.speed, travo))
         self.myprinter.cmd("G90")
 
     def BZClicked(self):
-        self.speed, travo = self.travx.get_distance()
+        travo = self.travx.get_distance()
         self.myprinter.cmd("G91")
         self.myprinter.cmd("G1 F%s Z%s" % (self.speed, travo))
         self.myprinter.cmd("G90")
