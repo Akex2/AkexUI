@@ -1,14 +1,13 @@
 [Unit]
 Description=akexui
-After=octoprint.service network-online.target
-Requires=octoprint.service network-online.target
+After=octoprint.service
 
 [Service]
 Type=simple
 ExecStartPre=/bin/systemctl stop getty@tty1.service
 ExecStartPre=/bin/bash -c '/bin/echo 0 > /sys/class/graphics/fbcon/cursor_blink'
 ExecStart=/usr/bin/sudo /usr/bin/xinit /usr/src/AkexUI/StartAkexUI -- vt1
-ExecStartPost=/usr/sbin/service touch restart
+#ExecStartPost=/usr/sbin/service touch restart
 ExecStopPost=/bin/systemctl start getty@tty1.service
 ExecStopPost=/bin/bash -c '/bin/echo 1 > /sys/class/graphics/fbcon/cursor_blink'
 
