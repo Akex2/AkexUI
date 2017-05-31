@@ -1,0 +1,10 @@
+[Unit]
+Description=simple and lightweight fan control program
+DefaultDependencies=false
+After=octoprint.service
+Requires=octoprint.service
+[Timer]
+OnActiveSec=55
+
+[Install]                                                                                                                                                                        
+WantedBy=multi-user.target 
