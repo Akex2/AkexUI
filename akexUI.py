@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 # encoding: utf-8:
 
 import sys
@@ -486,12 +486,15 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
             a = sorted(liste_fichiers, key=lambda x: x['ctime'],reverse=True)
             #print a
         #a = sorted(liste_fichiers, key=lambda x: 0)
-        print len(a)
-        while j < len(a):
-            #print "fichier"
-            fichier = a[j]['filename']
-            self.LWGcode.addItem(fichier)
-            j = j + 1
+	try:
+            print len(a)
+            while j < len(a):
+                #print "fichier"
+                fichier = a[j]['filename']
+                self.LWGcode.addItem(fichier)
+                j = j + 1
+	except:
+	   pass
         #a = sorted(liste_fichiers, key=lambda x: x['ctime'],reverse=True)
         #print a
 
@@ -546,7 +549,7 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
         #command.cmd('{"command": "M107"}','X-Api-Key: 054E508852624649B8B250B341CFF639')
 
     def BXClicked(self):
-        travo = self.travx.get_distance()       
+        travo = self.travx.get_distance()
         self.myprinter.cmd("G91")
         self.myprinter.cmd("G1 F%s X%s" % (self.speed, travo))
         self.myprinter.cmd("G90")
@@ -554,7 +557,7 @@ class MainDialog(QtGui.QFrame, rempPrototest.Ui_Frame):
         #print self.speed, travo #self.speed, travo.aficher()
 
     def BXMClicked(self):
-        travo = self.travx.get_distance()       
+        travo = self.travx.get_distance()
         self.myprinter.cmd("G91")
         self.myprinter.cmd("G1 F%s X-%s" % (self.speed, travo))
         self.myprinter.cmd("G90")
