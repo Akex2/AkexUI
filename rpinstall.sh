@@ -43,7 +43,8 @@ apt-get install -y xinit unclutter
 
 echo "+++++++++++++++ auto-launch at boot"
 cp /usr/src/AkexUI/akexui.service /lib/systemd/system
-systemctl enable akexui
+cp /usr/src/AkexUI/akexui.timer /lib/systemd/system
+systemctl enable akexui.timer
 
 cd /usr/src/
 rm -r pyqtgraph*
