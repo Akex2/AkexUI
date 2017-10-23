@@ -45,6 +45,8 @@ echo "+++++++++++++++ auto-launch at boot"
 cp /usr/src/AkexUI/akexui.service /lib/systemd/system
 cp /usr/src/AkexUI/akexui.timer /lib/systemd/system
 systemctl enable akexui.timer
+chmod +x akexUI.py
+chmod +x StartakexUI.py
 
 cd /usr/src/
 rm -r pyqtgraph*
@@ -52,7 +54,7 @@ rm pyqtgraph*
 rm -r websocket-client
 
 echo "all is done"
-echo "you can raeboot"
-echo "this UI need Octoprint installed, and ApiKey an url in akexUI.yaml"
+echo "you can reboot"
+echo "this UI need Octoprint installed, put your ApiKey and some setup in /usr/src/AkexUI/akexUI.yaml"
 
 exit 0
