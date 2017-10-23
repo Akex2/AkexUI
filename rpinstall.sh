@@ -47,7 +47,7 @@ cp /usr/src/AkexUI/akexui.timer /lib/systemd/system
 systemctl enable akexui.timer
 cd /usr/src/
 chmod +x akexUI.py
-chmod +x StartakexUI.py
+chmod +x StartakexUI
 
 rm -r pyqtgraph*
 rm pyqtgraph*
