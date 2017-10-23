@@ -45,10 +45,10 @@ echo "+++++++++++++++ auto-launch at boot"
 cp /usr/src/AkexUI/akexui.service /lib/systemd/system
 cp /usr/src/AkexUI/akexui.timer /lib/systemd/system
 systemctl enable akexui.timer
+cd /usr/src/
 chmod +x akexUI.py
 chmod +x StartakexUI.py
 
-cd /usr/src/
 rm -r pyqtgraph*
 rm pyqtgraph*
 rm -r websocket-client
