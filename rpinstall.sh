@@ -45,7 +45,7 @@ echo "+++++++++++++++ auto-launch at boot"
 cp /usr/src/AkexUI/akexui.service /lib/systemd/system
 cp /usr/src/AkexUI/akexui.timer /lib/systemd/system
 systemctl enable akexui.timer
-cd /usr/src/
+cd /usr/src/AkexUI/
 chmod +x akexUI.py
 chmod +x StartakexUI
 
